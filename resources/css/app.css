@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'Rozetka';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 100;
+    src: local('../assets/fonts/RozetkaWeb-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'Rozetka';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 200;
+    src: local('../assets/fonts/RozetkaWeb-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'Rozetka';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 300;
+    src: local('../assets/fonts/RozetkaWeb-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'Rozetka';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+    src: local('../assets/fonts/RozetkaWeb-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'Rozetka';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 500;
+    src: local('../assets/fonts/RozetkaWeb-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'Rozetka';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 600;
+    src: local('../assets/fonts/RozetkaWeb-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'Rozetka';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 700;
+    src: local('../assets/fonts/RozetkaWeb-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'Rozetka';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 800;
+    src: local('../assets/fonts/RozetkaWeb-Regular.woff2');
+}
+
+
+
+* {
+    font-family: 'Rozetka', monospace !important;
+}

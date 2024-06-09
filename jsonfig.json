@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "strict": false,
+        "target": "ESNext",
+        "lib": ["ESNext", "dom", "dom.iterable", "scriptHost", "ES2016"],
+        "allowUnreachableCode": true,
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "resources/js/src/*"
+            ]
+        }
+    }
+}
