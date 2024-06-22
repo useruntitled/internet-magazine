@@ -17,9 +17,11 @@
     <body>
         @include("layouts.partials.default.header")
         <div class="min-h-screen">
-            <div class="flex row-reverse space-x-4">
+            <div class="flex row-reverse space-x-4 w-full">
                 <main class="max-w-[90rem] mx-auto">
-                    @yield("content")
+                    <div class="min-w-[90rem]">
+                        @yield("content")
+                    </div>
                 </main>
             </div>
         </div>

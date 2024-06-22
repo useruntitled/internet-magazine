@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -18,7 +19,7 @@ class Category extends Model
         'description',
         'parent_id',
         'nesting_level',
-        'image',
+        'icon',
     ];
 
     protected static function booted(): void
@@ -27,6 +28,9 @@ class Category extends Model
             $category = Category::find($model->parent_id);
             if ($category) {
                 $model->nesting_level = $category->nesting_level ? $category->nesting_level + 1 : 1;
+                $model->slug = $category->slug . '-' . Str::slug($model->name);
+            } else {
+                $model->slug = Str::slug($model->name);
             }
         });
     }

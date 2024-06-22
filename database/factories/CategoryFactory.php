@@ -23,8 +23,11 @@ class CategoryFactory extends Factory
             'name' => $name,
             'slug' => Str::slug($name),
             'description' => fake()->words(mt_rand(5, 20), true),
-            'image' => fake()->imageUrl(randomize: false, word: $name),
+            'banner' => fake()->imageUrl(randomize: false, word: $name),
+            'preview_image' => 'https://avatars.mds.yandex.net/get-marketcms/1779479/img-65977b45-43d4-4e91-8e72-55d32079b7eb.png/optimize',
+            'icon' => 'https://avatars.mds.yandex.net/get-marketcms/475644/img-dca0991e-e9f8-4d1b-89e4-db2cec0d1d3c.svg/svg',
             'nesting_level' => 1,
+            'navigation_only' => false,
         ];
     }
 }

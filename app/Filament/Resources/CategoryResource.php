@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class CategoryResource extends Resource
 {
@@ -21,19 +22,29 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(40),
-                Forms\Components\TextInput::make('description')
-                    ->required()
-                    ->maxLength(200),
-                Forms\Components\Select::make('parent_id')
-                    ->label('Parent category')
-                    ->relationship('parent', 'name')
-                    ->searchable(),
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
-            ]);
+               Forms\Components\Split::make([
+                   Forms\Components\Section::make('Info')->schema([
+                       Forms\Components\TextInput::make('name')
+                           ->required()
+                           ->maxLength(40),
+                       Forms\Components\RichEditor::make('description')
+                           ->required()
+                           ->maxLength(200),
+                   ]),
+                   Forms\Components\Section::make('Other info')->schema([
+                       Forms\Components\Select::make('parent_id')
+                           ->label('Parent category')
+                           ->relationship('parent', 'name')
+                           ->preload()
+                           ->searchable(),
+                       Forms\Components\FileUpload::make('icon')
+                           ->image(),
+                       Forms\Components\FileUpload::make('preview_image')
+                           ->image(),
+                       Forms\Components\Toggle::make('navigation_only')
+                   ])->collapsible()
+               ])
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
@@ -42,7 +53,14 @@ class CategoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\TextColumn::make('parent.name'),
+                Tables\Columns\IconColumn::make('navigation_only')
+                    ->boolean()
+                    ->trueColor('warning')
+                    ->falseColor('info')
+                    ->alignCenter()
+                    ->sortable(),
+                Tables\Columns\ImageColumn::make('icon'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -56,7 +74,8 @@ class CategoryResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('navigation_only')
+                    ->query(fn (Builder $query): Builder => $query->where('navigation_only', true))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

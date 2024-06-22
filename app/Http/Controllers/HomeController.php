@@ -10,16 +10,6 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = Category::with('childrens')
-            ->whereHas('childrens')
-            ->get();
-
-        foreach ($categories as $category) {
-            foreach ($category->childrens as $children) {
-                $children->load('childrens');
-            }
-        }
-
         $products = Product::with([
             'brand',
             'category',
@@ -28,7 +18,6 @@ class HomeController extends Controller
             ->paginate(20);
 
         return view('index', [
-            'categories' => $categories,
             'products' => $products,
         ]);
     }

@@ -27,6 +27,7 @@ class CategoriesRelationManager extends RelationManager
                 Forms\Components\Select::make('parent_id')
                     ->label('Parent category')
                     ->relationship('parent', 'name')
+                    ->preload()
                     ->default($this->ownerRecord->getAttribute('id'))
                     ->searchable(),
 //                Forms\Components\TextInput::make('parent_id')

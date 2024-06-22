@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('slug', 120)->unique();
+            $table->string('slug')->unique();
 
             $table->string('name', 120);
 
@@ -24,7 +24,11 @@ return new class extends Migration
 
             $table->tinyInteger('nesting_level')->nullable()->default(1);
 
-            $table->string('image', 120)->nullable()->default(null);
+            $table->string('icon', 120)->nullable()->default(null);
+            $table->string('preview_image')->nullable()->default(null);
+            $table->string('banner')->nullable()->default(null);
+
+            $table->boolean('navigation_only')->default(false);
 
             $table->timestamps();
         });

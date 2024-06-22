@@ -16,6 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $this->call(ProductAttributeTypeSeeder::class);
+        $this->call(CategorySeeder::class);
+        
+
         $brands = Brand::factory()
             ->count(10)
             ->create();

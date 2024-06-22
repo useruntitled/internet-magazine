@@ -2,7 +2,9 @@
     <div
         class="max-w-[90rem] mx-auto flex flex-wrap justify-between space-x-4 items-center py-4"
     >
-        <div class="text-3xl">Magazine</div>
+        <div class="text-3xl">
+            <a href="/">Magazine</a>
+        </div>
         <div>
             <x-dropdowns.primary width="full">
                 <x-slot:trigger>
@@ -15,13 +17,19 @@
                 </x-slot>
                 <x-slot:content>
                     <div class="max-w-[90rem] mx-auto">
-                        <x-lists.categories-list :categories="$categories" />
+                        <x-lists.categories-list
+                            :categories="$menuCategories"
+                        />
                     </div>
                 </x-slot>
             </x-dropdowns.primary>
         </div>
         <div class="w-[60%]">
-            <input type="text" placeholder="search" class="w-full" />
+            <input
+                type="text"
+                placeholder="Search products"
+                class="w-full border border-2 border-gray-500 hover:border-gray-800 rounded-xl p-2 px-4"
+            />
         </div>
         <div>
             <a href="#" class="flex flex-col items-center">

@@ -18,7 +18,7 @@
         <div
             x-show="show"
             @click.outside="show = false"
-            class="absolute z-40 mt-8 text-start bg-white shadow rounded-lg p-5 text-black cursor-default"
+            class="absolute z-40 mt-[40px] text-start bg-white shadow rounded-lg p-5 text-black cursor-default"
             style="{{ $widthStyle }}"
         >
             {{ $content }}
